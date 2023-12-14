@@ -56,3 +56,9 @@ pub trait GradeProjection<N: Float> {
 pub trait MagnitudeSqr<N: Float> {
     fn magnitude_sqr(&self) -> N;
 }
+
+/// TODO!
+pub trait Normalize {
+    fn normalize(&mut self);
+    fn normalized(&self) -> Self;
+}

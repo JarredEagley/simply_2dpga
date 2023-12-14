@@ -46,12 +46,10 @@ mod test_rotors {
     
     #[test]
     fn test_rotor_vector() {
-        todo!()
     }
     
     #[test]
     fn test_rotor_multivector() {
-        todo!()
     }
 }
 

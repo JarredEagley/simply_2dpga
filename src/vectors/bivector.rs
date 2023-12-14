@@ -8,7 +8,7 @@ use super::{multivector::Multivector, trivector::Trivector, vector::Vector, k_ve
 
 
 /// In 2d PGA, a bivector represents a point in space.
-#[derive(Clone, PartialEq, Eq, Debug)]
+#[derive(Clone, Debug)]
 pub struct Bivector<N>
 where N: Float {
     pub e01: N,

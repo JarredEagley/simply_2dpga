@@ -7,7 +7,7 @@ use crate::traits::{GeometricProduct, OuterProduct};
 use super::{multivector::Multivector, bivector::{Bivector}, vector::Vector, k_vector::KVector};
 
 /// The trivector in this vector space is the pseudoscalar.
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug)]
 pub struct Trivector<N>
 where N: Float {
     pub e012: N

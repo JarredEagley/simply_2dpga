@@ -36,7 +36,8 @@ mod test_rotors {
 
         let result = rotor.apply(&point);
 
-        assert_eq!(result, correct_result)
+        todo!("Equality comparison must be restored.")
+        // assert_eq!(result, correct_result)
     }
     
     #[test]

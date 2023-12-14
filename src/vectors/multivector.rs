@@ -5,7 +5,7 @@ use crate::{traits::{GeometricProduct, GradeProjection, Dagger, GradeInvolution,
 
 use super::{bivector::Bivector, trivector::{Trivector}, vector::Vector, k_vector::KVector};
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug)]
 pub struct Multivector<N>
 where N: Float {
     pub trivector: Trivector<N>,

@@ -9,7 +9,7 @@ use crate::traits::GeometricProduct;
 use super::{multivector::Multivector};
 
 /// A K-Vector, where 'K' is the grade of the vector.
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug)]
 pub enum KVector<N: Float> {
     Scalar(N),
     Vector(Vector<N>),

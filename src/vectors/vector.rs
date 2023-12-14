@@ -7,7 +7,7 @@ use crate::traits::{GeometricProduct, OuterProduct, GradeProjection, Contraction
 use super::{multivector::{Multivector}, trivector::Trivector, bivector::Bivector, k_vector::KVector};
     
 /// In 2d PGA, a vector represents a line with an orientation and magnitude.
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug)]
 pub struct Vector<N> 
 where N: Float{
     pub e0: N,

@@ -46,11 +46,6 @@ mod test_rotors {
     }
     
     #[test]
-    fn test_rotor_bivector_at_infinity() {
-        todo!()
-    }
-    
-    #[test]
     fn test_rotor_vector() {
         todo!()
     }

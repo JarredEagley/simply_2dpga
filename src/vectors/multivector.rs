@@ -85,7 +85,8 @@ where N: Float {
         let scalar: N = 
             self.vector.e1      * other.vector.e1
             + self.vector.e2    * other.vector.e2
-            - self.bivector.e12 * other.bivector.e12;
+            - self.bivector.e12 * other.bivector.e12
+            + self.scalar * other.scalar; // Almost forgot this!
 
         let vector: Vector<N> = Vector {
             e0: 
@@ -94,7 +95,7 @@ where N: Float {
                 + self.bivector.e01 * other.vector.e1
                 - self.bivector.e20 * other.vector.e2
                 - self.bivector.e12 * other.trivector.e012
-                + self.trivector.e012 * other.bivector.e12
+                - self.trivector.e012 * other.bivector.e12
                 + self.scalar * other.vector.e0  // scalar
                 + self.vector.e0 * other.scalar, // scalar
             e1: 
@@ -116,6 +117,7 @@ where N: Float {
                  + self.vector.e2 * other.trivector.e012
                  + self.bivector.e20 * other.bivector.e12
                  - self.bivector.e12 * other.bivector.e20
+                 + self.trivector.e012 * other.vector.e2
                  + self.scalar * other.bivector.e01  // scalar
                  + self.bivector.e01 * other.scalar, // scalar
             e20: 

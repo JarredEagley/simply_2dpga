@@ -11,6 +11,7 @@ mod multivector_operators {
 
     #[test]
     fn test_geometric_product() {
+        // (0.5+2e0+3e1+4e2+5e01+6e20+7e12+8e012)*(2.0+1e0+2e1+3e2+3e01+2e20+1e12+2e012)
         let mv1: Multivector<f32> = Multivector {
             scalar: 0.5,
             vector: Vector{ e0: 2.0, e1: 3.0, e2: 4.0 },

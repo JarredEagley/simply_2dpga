@@ -1,3 +1,0 @@
-
-static EPSIOLON_F32: f32 = 0.000001;
-static EPSIOLON_F64: f32 = 0.000001;

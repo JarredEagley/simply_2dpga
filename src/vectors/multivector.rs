@@ -8,10 +8,10 @@ use super::{bivector::Bivector, trivector::{Trivector}, vector::Vector, k_vector
 #[derive(Clone, Debug)]
 pub struct Multivector<N>
 where N: Float {
-    pub trivector: Trivector<N>,
-    pub bivector: Bivector<N>,
+    pub scalar: N,
     pub vector: Vector<N>,
-    pub scalar: N    
+    pub bivector: Bivector<N>,
+    pub trivector: Trivector<N>,
 }
 
 // Constructors

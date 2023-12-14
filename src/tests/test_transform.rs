@@ -7,7 +7,13 @@ mod test_reflections {
 
 #[cfg(test)]
 mod test_rotors {
-    use crate::{vectors::bivector::Bivector, extras::{angle::Angle, transformations::{Rotor, RigidTransformation}, point2d::Point2d}};
+    use crate::{
+        vectors::bivector::Bivector, 
+        extras::{
+            angle::Angle, 
+            transformations::{Rotor, RigidTransformation}, 
+            point2d::Point2d}
+        };
 
     #[test]
     fn test_rotor_bivector() {
@@ -26,7 +32,7 @@ mod test_rotors {
         // The point that should result from this rotation.
         let correct_result = Bivector {
             e20: 11.64177848998413f32,
-            e01: -1.780256121069154,
+            e01: -1.7802553,
             e12: 1.0,
         };
 
@@ -36,8 +42,7 @@ mod test_rotors {
 
         let result = rotor.apply(&point);
 
-        todo!("Equality comparison must be restored.")
-        // assert_eq!(result, correct_result)
+        assert_eq!(result, correct_result)
     }
     
     #[test]

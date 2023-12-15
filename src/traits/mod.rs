@@ -57,8 +57,7 @@ pub trait MagnitudeSqr<N: Float> {
     fn magnitude_sqr(&self) -> N;
 }
 
-/// TODO!
+/// Return a normalized k-vector.
 pub trait Normalize {
-    fn normalize(&mut self);
     fn normalized(&self) -> Self;
 }

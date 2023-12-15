@@ -1,7 +1,7 @@
 [package]
 name = "simply_2dpga"
 license = "MIT"
-version = "0.3.0"
+version = "0.1.1"
 edition = "2021"
 description = "A 2d vector math library using 2d projective geometric algebra!  Designed to be programmer-friendly, specifically because I wanted to use PGA in game development.  Development is ongoing."
 

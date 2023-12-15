@@ -1,7 +1,7 @@
 
 #[cfg(test)]
 mod vector_operators {
-    use crate::{vectors::{vector::Vector, multivector::Multivector, bivector::Bivector, trivector::Trivector}, traits::{GeometricProduct, OuterProduct}};
+    use crate::{vectors::{vector::Vector, multivector::Multivector, bivector::Bivector, trivector::Trivector}, traits::{GeometricProduct, OuterProduct, Normalize}};
 
     #[test]
     fn test_geometric_product() {
@@ -62,5 +62,19 @@ mod vector_operators {
         };
 
         assert_eq!(meet, meet_correct);
+    }
+
+    #[test]
+    fn test_normalization() {
+        let v: Vector<f32> = Vector { e0: 3.0, e1: 6.0, e2: 9.0 };
+
+        let normalized = v.normalized();
+        let normalized_correct: Vector<f32> = Vector { 
+            e0: 0.2773500979,
+            e1: 0.5547001958,
+            e2: 0.83205026
+        };
+
+        assert_eq!(normalized, normalized_correct);
     }
 }

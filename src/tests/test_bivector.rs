@@ -1,7 +1,7 @@
 
 #[cfg(test)]
 mod bivector_operators {
-    use crate::{vectors::{bivector::Bivector, multivector::Multivector, vector::Vector, trivector::Trivector}, traits::{GeometricProduct, RegressiveProduct}};
+    use crate::{vectors::{bivector::Bivector, multivector::Multivector, vector::Vector, trivector::Trivector}, traits::{GeometricProduct, RegressiveProduct, Normalize}};
 
     #[test]
     fn test_geometric_product() {
@@ -61,6 +61,24 @@ mod bivector_operators {
         };
 
         assert_eq!(join, correct_join);
+    }
+
+    #[test]
+    fn test_normalization() {
+        let bv: Bivector<f32> = Bivector { 
+            e01: 3.0,
+            e20: 6.0,
+            e12: 9.0
+        };
+
+        let normalized = bv.normalized();
+        let normalized_correct: Bivector<f32> = Bivector {
+            e01: 0.3333333433,
+            e20: 0.6666666865,
+            e12: 1.0
+        };
+
+        assert_eq!(normalized, normalized_correct);
     }
 
 }

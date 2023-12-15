@@ -2,7 +2,7 @@ use std::{fmt::Display, ops::Mul};
 
 use num_traits::Float;
 
-use crate::traits::{GeometricProduct, OuterProduct, GradeProjection, RegressiveProduct};
+use crate::traits::{GeometricProduct, OuterProduct, GradeProjection, RegressiveProduct, Normalize, MagnitudeSqr, Dagger};
 
 use super::{multivector::Multivector, trivector::Trivector, vector::Vector, k_vector::KVector};
 
@@ -152,6 +152,25 @@ impl<N: Float> RegressiveProduct<Bivector<N>, N> for Bivector<N> {
             e2: 
                 self.e20 * other.e12
                  - self.e12 * other.e20
+        }
+    }
+}
+
+impl<N: Float> MagnitudeSqr<N> for Bivector<N> {
+    fn magnitude_sqr(&self) -> N {
+        let self_mv = self.to_multivector();
+        self_mv.reverse().geo(&self_mv)
+            .scalar
+    }
+}
+
+impl<N: Float> Normalize for Bivector<N> {
+    fn normalized(&self) -> Self {
+        let inv_magnitude = N::from(1.0).unwrap()/self.magnitude_sqr().sqrt();
+        Bivector {
+            e01: self.e01 * inv_magnitude,
+            e20: self.e20 * inv_magnitude,
+            e12: self.e12 * inv_magnitude
         }
     }
 }

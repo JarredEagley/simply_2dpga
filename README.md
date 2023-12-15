@@ -93,8 +93,60 @@ Admittedly, this part of the library ended up being more or less useless.  It wa
 
 
 # Operators
+I have tried to include all operators fundamental to 2d PGA.
+ * **Geometric product**
+    > The geometric product is the most fundamental operation in geometric algebra, so naturally it exists here.  Geometric product between any two k-vectors will produce a multivector as a result.  The geometric product between two multivectors likewise can be computed.
+    
+    > Note that most of the k-vector geoemtric products simply convert to a multivector first, then take the geometric product between two multivectors.  Hardcoding certain geometric products that happen commonly (such as between two vectors) could be a source of future optimizations.
+
+    > ```rust
+    > let mv1 = Multivector { ... };
+    > let mv2 = Multivector { ... };
+    > let product1 = mv1.geo(&mv2);
+    > let product2 = mv2.geo(&mv1);
+    > assert_ne!(product1, product2); // Should pass!
+    > ```
+ * **Grade projection**
+    > A grade projection on a multivector simply spits out the components of the multivector correlating to a particular grade.  For example, performing a grade projection of grade '1' on a multivector will give you its vector components.
+    
+    > This has been implemented as member function on the multivector struct, but that turned out to be unnecessary as you can simply extract the component you want from the multivector manually.  The function has been kept anyways.
+
+    > ```rust
+    > 
+    > ```
+ * **Wedge product**
+    > Also sometimes called the 'meet', as it can be used to build the meet of two lines (which would be a point). The wedge product of two *k-vectors* 'A' and 'B': `A^B=C` where 'A' has a grade 'i' and 'B' has a grade 'j' will produce 'C' with grade 'i+j'.  It is simply the geometric product followed by a grade projection.
+
+    > Hardcoding particular wedge products that are commonly used could be a potential source of future optimizations, if deemed necessary.
+
+    > ```rust
+    > // todo
+    > ```
+ * **Regressive product**
+    > The 'join' of two points will be a line.  This relationship is neatly captured by the regressive product.
+
+    > ```rust
+    > // todo
+    > ```
+ * **Inner product, left/right contractions**
+     > ...
+     > ```rust
+     > // todo
+     > ```
+ * **Reverse**
+     > ...
+     > ```rust
+     > // todo
+     > ```
+ * **Grade involution**
+     > ...
+     > ```rust
+     > // todo
+     > ```
 
 # Extras
+Things that aren't strictly 2d PGA primitives have been placed in the 'extras' crate.
+
 ## 2d Points
 ...
 

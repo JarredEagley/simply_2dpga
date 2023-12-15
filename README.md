@@ -112,7 +112,14 @@ I have tried to include all operators fundamental to 2d PGA.
     > This has been implemented as member function on the multivector struct, but that turned out to be unnecessary as you can simply extract the component you want from the multivector manually.  The function has been kept anyways.
 
     > ```rust
-    > 
+    > let example_multivector = Multivector { ... };
+    >
+    > // This syntax exists.
+    > let vector_component = example_multivector.grade_proj(1)
+    >     .to_vector().unwrap();
+    >
+    > // But it's really easier to just do this.
+    > let vector_component = example_multivector.vector;
     > ```
  * **Wedge product**
     > Also sometimes called the 'meet', as it can be used to build the meet of two lines (which would be a point). The wedge product of two *k-vectors* 'A' and 'B': `A^B=C` where 'A' has a grade 'i' and 'B' has a grade 'j' will produce 'C' with grade 'i+j'.  It is simply the geometric product followed by a grade projection.
@@ -120,29 +127,45 @@ I have tried to include all operators fundamental to 2d PGA.
     > Hardcoding particular wedge products that are commonly used could be a potential source of future optimizations, if deemed necessary.
 
     > ```rust
-    > // todo
+    > let v1 = Vector { ... };
+    > let v2 = Vector { ... };
+    >
+    > let resulting_bivector = v1.wedge(&v2);
     > ```
  * **Regressive product**
-    > The 'join' of two points will be a line.  This relationship is neatly captured by the regressive product.
+    > The 'join' of two points will be a line.  This relationship is neatly captured by the regressive product.  The regressive product has been manaully implemented for two bivectors.
 
+    > ***Note: I have not yet validated the correctness of the regressive product!***
+
+    > ```rust
+    > let bv1 = Bivector { ... };
+    > let bv2 = Bivector { ... };
+    >
+    > let joining_line = bv1.regressive(&bv2);
+    > ```
+ * **Inner product, left/right contractions**
+    > The inner product is, of course, the dot product! The left and right contractions exist too, just in case someone needs them.
+    
+    > The inner product is the geometric product of two k-vectors, grade projected to take the `|i-j|` component.  Practically speaking, this is almost always the scalar component.
+
+    > This operator might need to be optimized in the future for particular use cases.
+    
+    > ```rust
+    > let v1 = Vector { ... };
+    > let v2 = Vector { ... };
+    >
+    > let dot_product = v1.inner(&v2);
+    > ```
+ * **Reverse**
+    > ...
     > ```rust
     > // todo
     > ```
- * **Inner product, left/right contractions**
-     > ...
-     > ```rust
-     > // todo
-     > ```
- * **Reverse**
-     > ...
-     > ```rust
-     > // todo
-     > ```
  * **Grade involution**
-     > ...
-     > ```rust
-     > // todo
-     > ```
+    > ...
+    > ```rust
+    > // todo
+    > ```
 
 # Extras
 Things that aren't strictly 2d PGA primitives have been placed in the 'extras' crate.

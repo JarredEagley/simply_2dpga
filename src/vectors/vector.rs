@@ -2,7 +2,7 @@ use std::{fmt::Display, ops::Mul};
 
 use num_traits::Float;
 
-use crate::traits::{GeometricProduct, OuterProduct, GradeProjection, Contraction};
+use crate::traits::{GeometricProduct, OuterProduct, GradeProjection, Contraction, MagnitudeSqr, Normalize};
 
 use super::{multivector::{Multivector}, trivector::Trivector, bivector::Bivector, k_vector::KVector};
     
@@ -192,5 +192,22 @@ impl<N: Float> Contraction<Vector<N>, N> for Vector<N> {
             .grade_proj(0)
             .to_scalar()
             .unwrap()
+    }
+}
+
+impl<N: Float> MagnitudeSqr<N> for Vector<N> {
+    fn magnitude_sqr(&self) -> N {
+        (self.e1*self.e1) + (self.e2*self.e2)        
+    }
+}
+
+impl<N: Float> Normalize for Vector<N> {
+    fn normalized(&self) -> Self {
+        let inverse_magnitude = N::from(1.0).unwrap() / self.magnitude_sqr().sqrt();
+        Vector { 
+            e0: self.e0*inverse_magnitude, 
+            e1: self.e1*inverse_magnitude,
+            e2: self.e2*inverse_magnitude
+        }
     }
 }

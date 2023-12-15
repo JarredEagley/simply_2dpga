@@ -15,12 +15,19 @@ where N: Float {
 
 // Constructors
 impl<N: Float> Trivector<N> {
+    /// Get a trivector with e012 set to zero.
     pub fn zero() -> Self {
         Trivector { e012: N::zero() }
     }
 
+    /// Build a trivector with an arbitrary e012 coefficient.
     pub fn new(e012: N) -> Self {
         Trivector { e012 }
+    }
+
+    /// Get the unit pseudoscalar.
+    pub fn unit() -> Self {
+        Trivector { e012: N::from(1.0).unwrap() }
     }
 }
 

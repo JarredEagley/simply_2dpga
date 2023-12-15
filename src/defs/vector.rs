@@ -15,8 +15,9 @@ where N: Float{
     pub e2: N,
 }
 
-// Constructors
+/// Constructors
 impl<N: Float> Vector<N> {
+    /// Initialize a vector with all coefficients set to zero.
     pub fn zero() -> Vector<N> {
         Vector {
             e0: N::zero(),

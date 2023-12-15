@@ -18,6 +18,7 @@ where N: Float {
 
 // Constructors
 impl<N: Float> Bivector<N> {
+    /// Initialize a bivector with all coefficients set to zero.
     pub fn zero() -> Self {
         Bivector { 
             e01: N::zero(),

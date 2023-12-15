@@ -5,6 +5,10 @@ use crate::{traits::{GeometricProduct, GradeProjection, Dagger, GradeInvolution,
 
 use super::{bivector::Bivector, trivector::{Trivector}, vector::Vector, k_vector::KVector};
 
+
+/// A geometric algebra multivector.  I find it has a lot of parallels to a transformation matrix.
+/// A multivector is comprised of coefficients multiplied with basis k-vector elements.
+/// 2D PGA is a 3-dimensional algebra, and thus will have 1 scalar, 3 vectors, 3 bivectors, and 1 trivector.
 #[derive(Clone, Debug)]
 pub struct Multivector<N>
 where N: Float {
@@ -14,7 +18,7 @@ where N: Float {
     pub trivector: Trivector<N>,
 }
 
-// Constructors
+/// Constructors.
 impl<N: Float> Multivector<N> {
     /// A multivector with all components zero'd out.
     pub fn zero() -> Multivector<N> {
@@ -67,6 +71,7 @@ impl<N: Float> Multivector<N> {
     }
 }
 
+/// Multivectors implement the display attribute, so long as the float they're defined with also implement Display.
 impl<N: Float+Display> Display for Multivector<N> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let scalar = self.scalar;
@@ -77,9 +82,22 @@ impl<N: Float+Display> Display for Multivector<N> {
     }
 }
 
-// Geometric product between a multivector and another multivector.
+/// Implementation for the geometric product between two multivectors.
 impl<N> GeometricProduct<Multivector<N>, N> for Multivector<N> 
 where N: Float {
+    /// Geometric product between a multivector and another multivector.
+    /// This is the heart of this library.  Almost all other operations can be traced to this function.
+    /// 
+    /// # Example
+    /// ```rust
+    /// let mv1: Multivector<f32> = Multivector { ... };
+    /// let mv2: Multivector<f32> = Multivector { ... };
+    /// 
+    /// let product_1 = mv1.geo(&mv2);
+    /// let product_2 = mv2.geo(&mv1);
+    /// 
+    /// assert_ne(product_1, product_2);
+    /// ```
     fn geo(&self, other: &Multivector<N>) -> Multivector<N> {
         // Using Cayley table to hardcode the operations:
         let scalar: N = 
@@ -153,8 +171,10 @@ where N: Float {
 }
 
 
-// Grade projection
+/// Grade projection
 impl<N: Float> GradeProjection<N> for Multivector<N> {
+    /// A grade projection operation for a multivector.  This can be safely considered obsolete, as its
+    /// simpler to just grab the 'k' component from a multivector directly.
     fn grade_proj(&self, grade: u16) -> KVector<N> {
         match grade {
             0 => KVector::Scalar(self.scalar),
@@ -168,11 +188,13 @@ impl<N: Float> GradeProjection<N> for Multivector<N> {
 
 /// Dagger (reverse) operator
 impl<N: Float> Dagger for Multivector<N> {
+    /// A reverse (dagger) operation.  This will flip the sign of the coefficient every two grades.
+    /// This is often used in ways analagous to an inverse operation, though they're not the same operation.
     fn reverse(&self) -> Self {
         let neg = N::from(-1.0).unwrap();
         Multivector {
             scalar: self.scalar,
-            vector: self.vector.clone(), // TODO: Does this result in borrwing problems? I think I need to clone this.
+            vector: self.vector.clone(),
             bivector: self.bivector.clone() * neg,
             trivector: self.trivector.clone() * neg
         }        
@@ -181,6 +203,7 @@ impl<N: Float> Dagger for Multivector<N> {
 
 /// Grade involution (star) operator.
 impl<N: Float> GradeInvolution for Multivector<N> {
+    /// Grade involution operation.  This will flip the sign of the coefficient every grade.
     fn grade_involution(&self) -> Self {
         let neg = N::from(-1.0).unwrap();
         Multivector {
@@ -193,6 +216,9 @@ impl<N: Float> GradeInvolution for Multivector<N> {
 }
 
 impl<N: Float> MagnitudeSqr<N> for Multivector<N> {
+    /// The square magnitude of a multivector.  This is produced by multiplying the reverse of the multivector with itself, then
+    /// taking the scalar component.
+    /// Converting the magnitude squared to a magnitude is left as an exercise for the reader.
     fn magnitude_sqr(&self) -> N {
         self.reverse()
             .geo(&self)

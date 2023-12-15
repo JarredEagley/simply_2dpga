@@ -157,22 +157,36 @@ I have tried to include all operators fundamental to 2d PGA.
     > let dot_product = v1.inner(&v2);
     > ```
  * **Reverse**
-    > ...
+    > Often notated with the 'dagger' symbol, the reverse operator in theory reverses the ordering of the basis components of each element of a multivector.  In practice, this flips the sign every 2 grades.
 
     > ```rust
     > let example_multivector = Multivector { ... };
     > let example_reversed = example_multivector.reverse();
     > ```
  * **Grade involution**
-    > ...
+    > Unlike reverse, grade involution flips the sign every grade.  Likewise, it can be performed with a simple call:
     
     > ```rust
     > let example_multivector = Multivector { ... };
     > let example_involuted = example_multivector.grade_involution();
     > ```
 
- * Magnitude Squared - TODO
- * Normalize - TODO
+ * **Magnitude Squared**
+    > The square magnitude is implemented for vectors and bivectors:
+
+    > ```rust
+    > let v1: Vector<f32> = Vector { ... };
+    > let v1_norm: f32 = v1.magnitude_sqr()
+    >    .sqrt(); // Take the sqrt if you want the magnitude.
+    > ```
+ * **Normalize**
+    > Normalization is implemented for vectors and bivectors:
+
+    > ```rust
+    > let v1: Vector<f32> = Vector { ... };
+    > // Note: This will always perform a square root operation.  Norms are not cached by simply_2dpga.
+    > let v1_normalized = v1.normalized();
+    > ```
 
 # Extras
 Things that aren't strictly 2d PGA primitives have been placed in the 'extras' crate.

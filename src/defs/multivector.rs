@@ -90,13 +90,15 @@ where N: Float {
     /// 
     /// # Example
     /// ```rust
-    /// let mv1: Multivector<f32> = Multivector { ... };
-    /// let mv2: Multivector<f32> = Multivector { ... };
+    /// use simply_2dpga::prelude::*;
+    /// 
+    /// let mv1: Multivector<f32> = Multivector::from_vector(Vector{ e0: 1.0, e1: 2.0, e2: 3.0 });
+    /// let mv2: Multivector<f32> = Multivector::from_vector(Vector{ e0: 4.0, e1: 5.0, e2: 6.0 });
     /// 
     /// let product_1 = mv1.geo(&mv2);
     /// let product_2 = mv2.geo(&mv1);
     /// 
-    /// assert_ne(product_1, product_2);
+    /// assert_ne!(product_1, product_2);
     /// ```
     fn geo(&self, other: &Multivector<N>) -> Multivector<N> {
         // Using Cayley table to hardcode the operations:

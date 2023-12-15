@@ -1,7 +1,7 @@
 
 #[cfg(test)]
 mod vector_operators {
-    use crate::{vectors::{vector::Vector, multivector::Multivector, bivector::Bivector, trivector::Trivector}, traits::GeometricProduct};
+    use crate::{vectors::{vector::Vector, multivector::Multivector, bivector::Bivector, trivector::Trivector}, traits::{GeometricProduct, OuterProduct}};
 
     #[test]
     fn test_geometric_product() {
@@ -38,5 +38,29 @@ mod vector_operators {
 
         assert_eq!(result1, correct_result1);
         assert_eq!(result2, correct_result2);
+    }
+
+    #[test]
+    fn test_wedge_product() {
+        let v1: Vector<f32> = Vector {
+            e0: 2.0,
+            e1: 2.5,
+            e2: 3.0,
+        };
+        let v2: Vector<f32> = Vector {
+            e0: 3.5,
+            e1: 4.5,
+            e2: 5.5,
+        };
+
+        let meet = v1.wedge(&v2);
+        
+        let meet_correct: Bivector<f32> = Bivector { 
+            e01: 0.25,
+            e20: -0.5,
+            e12: 0.25
+        };
+
+        assert_eq!(meet, meet_correct);
     }
 }

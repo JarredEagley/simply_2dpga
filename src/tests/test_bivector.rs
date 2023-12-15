@@ -1,7 +1,7 @@
 
 #[cfg(test)]
 mod bivector_operators {
-    use crate::{vectors::{bivector::Bivector, multivector::Multivector, vector::Vector, trivector::Trivector}, traits::GeometricProduct};
+    use crate::{vectors::{bivector::Bivector, multivector::Multivector, vector::Vector, trivector::Trivector}, traits::{GeometricProduct, RegressiveProduct}};
 
     #[test]
     fn test_geometric_product() {
@@ -37,4 +37,30 @@ mod bivector_operators {
         assert_eq!(result2, correct_result_2);
         assert_eq!(result1, correct_result_1);
     }
+
+    #[test]
+    fn test_regresssive_product() {
+        // The join of two points is a line.
+        let point1: Bivector<f32> = Bivector{
+            e01: 4.0,
+            e20: 4.0,
+            e12: 1.0,
+        };
+        let point2: Bivector<f32> = Bivector{
+            e01: -1.0,
+            e20: -4.0,
+            e12: 1.0,
+        };
+
+        let join = point1.regressive(&point2);
+
+        let correct_join: Vector<f32> = Vector { 
+            e0: -12.0,
+            e1: -5.0,
+            e2: 8.0
+        };
+
+        assert_eq!(join, correct_join);
+    }
+
 }

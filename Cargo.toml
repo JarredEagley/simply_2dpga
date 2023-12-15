@@ -4,6 +4,8 @@ license = "MIT"
 version = "0.1.1"
 edition = "2021"
 description = "A 2d vector math library using 2d projective geometric algebra!  Designed to be programmer-friendly, specifically because I wanted to use PGA in game development.  Development is ongoing."
+readme = "README.md"
+repository = "https://github.com/JarredEagley/simply_2dpga"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

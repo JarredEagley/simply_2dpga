@@ -1,6 +1,6 @@
 use num_traits::Float;
 
-use crate::vectors::{multivector::Multivector, k_vector::KVector};
+use crate::defs::{multivector::Multivector, k_vector::KVector};
 
 /// The geometric product.  This is what makes geometric algebra geometric algebra.
 pub trait GeometricProduct<S, N> 

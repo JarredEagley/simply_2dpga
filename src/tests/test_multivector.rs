@@ -6,7 +6,7 @@ mod multivector_constructors {
 
 #[cfg(test)]
 mod multivector_operators {
-    use crate::{vectors::{multivector::Multivector, vector::Vector, bivector::Bivector, trivector::Trivector}, traits::GeometricProduct};
+    use crate::{defs::{multivector::Multivector, vector::Vector, bivector::Bivector, trivector::Trivector}, traits::GeometricProduct};
 
 
     #[test]

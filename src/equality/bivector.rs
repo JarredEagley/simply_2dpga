@@ -1,6 +1,6 @@
 use num_traits::Float;
 
-use crate::vectors::bivector::Bivector;
+use crate::defs::bivector::Bivector;
 
 
 impl<N: Float + PartialEq> PartialEq for Bivector<N> {

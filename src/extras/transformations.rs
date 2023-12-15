@@ -1,6 +1,6 @@
 use num_traits::Float;
 
-use crate::{vectors::{vector::Vector, bivector::{Bivector}, trivector::Trivector, multivector::Multivector}, traits::{GeometricProduct, Dagger}};
+use crate::{defs::{vector::Vector, bivector::{Bivector}, trivector::Trivector, multivector::Multivector}, traits::{GeometricProduct, Dagger}};
 
 use super::{angle::Angle, point2d::Point2d};
 
@@ -85,7 +85,7 @@ impl<N: Float> Rotor<N> {
         let sin = (alpha * half).sin();
         let mv = Multivector {
             scalar: cos,
-            vector: crate::vectors::vector::Vector::zero(),
+            vector: crate::defs::vector::Vector::zero(),
             bivector: (axis.to_bivector() * sin),
             trivector: Trivector::zero(),
         };

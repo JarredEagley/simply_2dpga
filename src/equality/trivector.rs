@@ -1,6 +1,6 @@
 use num_traits::Float;
 
-use crate::vectors::trivector::Trivector;
+use crate::defs::trivector::Trivector;
 
 
 impl<N: Float + PartialEq> PartialEq for Trivector<N> {

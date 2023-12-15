@@ -1,4 +1,4 @@
-pub mod vectors;
+pub mod defs;
 pub mod traits;
 pub mod extras;
 

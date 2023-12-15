@@ -2,7 +2,7 @@ use std::fmt::Display;
 
 use num_traits::Float;
 
-use crate::{vectors::{bivector::Bivector, vector::Vector}, traits::RegressiveProduct};
+use crate::{defs::{bivector::Bivector, vector::Vector}, traits::RegressiveProduct};
 
 /// In 2d pga, a point is a bivector.  This will be a simple eucludian point that
 /// can be converted to and from the bivector struct, as a convenient handle.

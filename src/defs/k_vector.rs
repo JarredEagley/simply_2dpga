@@ -1,9 +1,9 @@
 use std::fmt::Display;
 
 use num_traits::Float;
-use crate::{vectors::vector::Vector, traits::OuterProduct};
-use crate::vectors::bivector::Bivector;
-use crate::vectors::trivector::Trivector;
+use crate::{defs::vector::Vector, traits::OuterProduct};
+use crate::defs::bivector::Bivector;
+use crate::defs::trivector::Trivector;
 use crate::traits::GeometricProduct;
 
 use super::{multivector::Multivector};

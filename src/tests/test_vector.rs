@@ -1,7 +1,7 @@
 
 #[cfg(test)]
 mod vector_operators {
-    use crate::{vectors::{vector::Vector, multivector::Multivector, bivector::Bivector, trivector::Trivector}, traits::{GeometricProduct, OuterProduct, Normalize}};
+    use crate::{defs::{vector::Vector, multivector::Multivector, bivector::Bivector, trivector::Trivector}, traits::{GeometricProduct, OuterProduct, Normalize}};
 
     #[test]
     fn test_geometric_product() {

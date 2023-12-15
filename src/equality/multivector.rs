@@ -1,6 +1,6 @@
 use num_traits::Float;
 
-use crate::vectors::multivector::Multivector;
+use crate::defs::multivector::Multivector;
 
 
 impl<N: Float + PartialEq> PartialEq for Multivector<N> {

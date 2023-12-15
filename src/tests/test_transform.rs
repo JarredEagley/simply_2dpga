@@ -7,7 +7,7 @@ mod test_reflections {
 #[cfg(test)]
 mod test_rotors {
     use crate::{
-        vectors::bivector::Bivector, 
+        defs::bivector::Bivector, 
         extras::{
             angle::Angle, 
             transformations::{Rotor, RigidTransformation}, 

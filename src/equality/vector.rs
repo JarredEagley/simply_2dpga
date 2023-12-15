@@ -1,6 +1,6 @@
 use num_traits::Float;
 
-use crate::vectors::vector::Vector;
+use crate::defs::vector::Vector;
 
 impl<N: Float + PartialEq> PartialEq for Vector<N> {
     fn eq(&self, other: &Self) -> bool {

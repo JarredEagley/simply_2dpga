@@ -8,6 +8,8 @@ If you're not familiar with projective geometric algebra, see:
 
 Otherwise, this library is exactly what it sounds like.
 
+*This is my first published Rust crate, so please be gentle.  If something isn't quite right with the math or with the Rust code, let me know!*
+
 # Usage
 Usage of this library should be fairly straightforward, assuming a basic understanding of projective geometric algebra.
 

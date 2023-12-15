@@ -51,7 +51,7 @@ impl<N: Float> Bivector<N> {
 
 impl<N: Float+Display> Display for Bivector<N> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{{ {}e01, {}e20, {}e12 }}", self.e01, self.e20, self.e12)
+        write!(f, "{{ {}e₀₁, {}e₂₀, {}e₁₂ }}", self.e01, self.e20, self.e12)
     }
 }
 

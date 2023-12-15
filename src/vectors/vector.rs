@@ -54,7 +54,7 @@ impl<N: Float> Vector<N> {
 
 impl<N: Float+Display> Display for Vector<N> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{{ {}e0, {}e1, {}e2 }}", self.e0, self.e1, self.e2)
+        write!(f, "{{ {}e₀, {}e₁, {}e₂ }}", self.e0, self.e1, self.e2)
     }
 }
 

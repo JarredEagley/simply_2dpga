@@ -45,7 +45,7 @@ impl<N: Float> Trivector<N> {
 
 impl<N: Float+Display> Display for Trivector<N> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{{ {}e012 }}", self.e012 )
+        write!(f, "{{ {}e₀₁₂ }}", self.e012 )
     }
 }
 

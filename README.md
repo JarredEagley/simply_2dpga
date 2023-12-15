@@ -158,14 +158,21 @@ I have tried to include all operators fundamental to 2d PGA.
     > ```
  * **Reverse**
     > ...
+
     > ```rust
-    > // todo
+    > let example_multivector = Multivector { ... };
+    > let example_reversed = example_multivector.reverse();
     > ```
  * **Grade involution**
     > ...
+    
     > ```rust
-    > // todo
+    > let example_multivector = Multivector { ... };
+    > let example_involuted = example_multivector.grade_involution();
     > ```
+
+ * Magnitude Squared - TODO
+ * Normalize - TODO
 
 # Extras
 Things that aren't strictly 2d PGA primitives have been placed in the 'extras' crate.

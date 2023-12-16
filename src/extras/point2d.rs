@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::{fmt::Display, ops::Add};
 
 use num_traits::Float;
 
@@ -56,5 +56,27 @@ impl<N: Float> Point2d<N> {
 impl<N: Float+Display> Display for Point2d<N> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "[{}, {}]", self.x, self.y)
+    }
+}
+
+/// Addition between two points is a common opertion.
+impl<N: Float> Add<Point2d<N>> for Point2d<N> {
+    type Output = Self;
+
+    /// Add two points.
+    /// ```rust
+    /// use simply_2dpga::extras::point2d::*;
+    /// 
+    /// let p1 = Point2d{x: 1.0, y: 2.0};
+    /// let p2 = Point2d{x: 3.0, y: 4.0};
+    /// let sum = p1+p2;
+    /// let expected = Point2d{x: 4.0, y: 6.0};
+    /// assert_eq!(sum, expected);
+    /// ```
+    fn add(self, rhs: Point2d<N>) -> Self::Output {
+        Point2d {
+            x: self.x + rhs.x,
+            y: self.y + rhs.y
+        }
     }
 }
